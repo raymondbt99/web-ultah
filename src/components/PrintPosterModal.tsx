@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import Image from "next/image";
+import React, { useRef, useState, useEffect } from "react";
 import { Printer, Download, X, Sparkles, Calendar, Clock, MapPin, CheckCircle2 } from "lucide-react";
 import html2canvas from "html2canvas";
 
@@ -14,6 +13,48 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
   const posterRef = useRef<HTMLDivElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
+  const [base64Photo, setBase64Photo] = useState<string>("");
+
+  // Pre-load and convert portrait to in-memory Base64 Data URL so html2canvas and print never fail
+  useEffect(() => {
+    if (!isOpen) return;
+
+    let isMounted = true;
+    const loadPhoto = async () => {
+      try {
+        const res = await fetch("/images/portrait.jpg");
+        if (!res.ok) throw new Error("portrait.jpg not found");
+        const blob = await res.blob();
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          if (isMounted && typeof reader.result === "string") {
+            setBase64Photo(reader.result);
+          }
+        };
+        reader.readAsDataURL(blob);
+      } catch {
+        // Fallback to potrait.jpg if portrait.jpg has issue
+        try {
+          const res2 = await fetch("/images/potrait.jpg");
+          const blob2 = await res2.blob();
+          const reader2 = new FileReader();
+          reader2.onloadend = () => {
+            if (isMounted && typeof reader2.result === "string") {
+              setBase64Photo(reader2.result);
+            }
+          };
+          reader2.readAsDataURL(blob2);
+        } catch {
+          // Ignore
+        }
+      }
+    };
+
+    loadPhoto();
+    return () => {
+      isMounted = false;
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -23,14 +64,23 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
     setDownloadSuccess(false);
 
     try {
-      // Allow fonts and images to settle
+      // Ensure all web fonts and images are ready
       await document.fonts.ready;
 
       const canvas = await html2canvas(posterRef.current, {
-        scale: 3, // High DPI for crisp print and mobile sharing
+        scale: 2.5, // Crisp 300+ DPI output
         useCORS: true,
+        allowTaint: true,
         backgroundColor: "#200609",
         logging: false,
+        imageTimeout: 15000,
+        onclone: (clonedDoc) => {
+          // Ensure cloned document image is visible and has complete src
+          const clonedImg = clonedDoc.querySelector("#poster-celebrant-photo") as HTMLImageElement;
+          if (clonedImg && base64Photo) {
+            clonedImg.src = base64Photo;
+          }
+        },
       });
 
       const image = canvas.toDataURL("image/png", 1.0);
@@ -45,7 +95,7 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
       setTimeout(() => setDownloadSuccess(false), 3000);
     } catch (err) {
       console.error("Gagal membuat gambar poster:", err);
-      alert("Maaf, terjadi kendala saat memproses gambar poster. Anda juga dapat menggunakan opsi Cetak / Print langsung.");
+      alert("Maaf, terjadi kendala saat memproses gambar poster. Anda juga dapat menggunakan opsi Cetak langsung.");
     } finally {
       setIsGenerating(false);
     }
@@ -55,8 +105,12 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
     window.print();
   };
 
+  // Image source priority: in-memory base64 -> portrait.jpg -> potrait.jpg
+  const photoSrc = base64Photo || "/images/portrait.jpg";
+
   return (
     <div
+      className="poster-modal-overlay"
       style={{
         position: "fixed",
         inset: 0,
@@ -74,6 +128,7 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
       }}
     >
       <div
+        className="poster-modal-wrapper"
         style={{
           maxWidth: "560px",
           width: "100%",
@@ -86,6 +141,7 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
       >
         {/* Top Action Bar */}
         <div
+          className="poster-action-bar no-print"
           style={{
             display: "flex",
             alignItems: "center",
@@ -114,6 +170,7 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "6px",
+                cursor: "pointer",
               }}
               title="Cetak via Printer atau Simpan sebagai PDF"
             >
@@ -131,6 +188,7 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
                 alignItems: "center",
                 gap: "6px",
                 opacity: isGenerating ? 0.7 : 1,
+                cursor: "pointer",
               }}
               title="Unduh file gambar PNG"
             >
@@ -185,7 +243,8 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
               width: "100%",
               maxWidth: "500px",
               margin: "0 auto",
-              background: "linear-gradient(180deg, #2a070c 0%, #170305 50%, #29070c 100%)",
+              background: "#200609",
+              backgroundImage: "linear-gradient(180deg, #2e080d 0%, #150204 50%, #2e080d 100%)",
               color: "#ffffff",
               padding: "28px 22px",
               boxSizing: "border-box",
@@ -249,31 +308,36 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
             <div
               style={{
                 position: "relative",
-                width: "125px",
-                height: "125px",
+                width: "130px",
+                height: "130px",
                 margin: "0 auto 12px auto",
               }}
             >
               <div
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: "130px",
+                  height: "130px",
                   borderRadius: "50%",
                   overflow: "hidden",
                   border: "3px solid #d4af37",
                   boxShadow: "0 6px 20px rgba(0,0,0,0.6)",
                   position: "relative",
+                  background: "#3c0c11",
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/potrait.jpg"
+                  id="poster-celebrant-photo"
+                  src={photoSrc}
+                  crossOrigin="anonymous"
                   alt="Djong Nyun Kui"
+                  width={130}
+                  height={130}
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
                     display: "block",
+                    borderRadius: "50%",
                   }}
                 />
               </div>
@@ -282,7 +346,7 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
               <div
                 style={{
                   position: "absolute",
-                  bottom: "-4px",
+                  bottom: "-2px",
                   right: "-2px",
                   background: "linear-gradient(135deg, #facc15, #b91c1c)",
                   color: "#ffffff",
@@ -296,6 +360,7 @@ export default function PrintPosterModal({ isOpen, onClose }: PrintPosterModalPr
                   fontSize: "14px",
                   border: "2px solid #200609",
                   boxShadow: "0 4px 10px rgba(0,0,0,0.6)",
+                  zIndex: 2,
                 }}
               >
                 72
