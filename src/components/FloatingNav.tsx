@@ -1,16 +1,14 @@
 "use client";
 
 import React from "react";
-import { Home, Clock, MapPin, Camera, UserCheck, Gift } from "lucide-react";
+import { Home, Timer, Clock, MapPin } from "lucide-react";
 
 export default function FloatingNav() {
   const navItems = [
     { label: "Home", href: "#hero", icon: <Home size={18} /> },
+    { label: "Hitung Mundur", href: "#countdown-section", icon: <Timer size={18} /> },
     { label: "Acara", href: "#rundown", icon: <Clock size={18} /> },
     { label: "Lokasi", href: "#location", icon: <MapPin size={18} /> },
-    { label: "Galeri", href: "#gallery", icon: <Camera size={18} /> },
-    { label: "RSVP", href: "#rsvp", icon: <UserCheck size={18} /> },
-    { label: "Kado", href: "#gift", icon: <Gift size={18} /> },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

@@ -9,9 +9,6 @@ import AudioControl from "@/components/AudioControl";
 import Countdown from "@/components/Countdown";
 import Rundown from "@/components/Rundown";
 import LocationCard from "@/components/LocationCard";
-import Gallery from "@/components/Gallery";
-import RsvpAndGuestbook from "@/components/RsvpAndGuestbook";
-import DigitalGift from "@/components/DigitalGift";
 import FloatingNav from "@/components/FloatingNav";
 import ShareAndCustomize from "@/components/ShareAndCustomize";
 
@@ -121,7 +118,7 @@ function InvitationContent() {
             >
               <Image
                 src="/images/portrait.jpg"
-                alt="Oma Tan Mei Ling (陈美玲)"
+                alt="Djong Nyun Kui"
                 fill
                 sizes="230px"
                 style={{ objectFit: "cover" }}
@@ -172,22 +169,11 @@ function InvitationContent() {
               fontSize: "clamp(2.4rem, 6vw, 4.2rem)",
               fontWeight: "700",
               lineHeight: 1.15,
-              marginBottom: "6px",
+              marginBottom: "20px",
             }}
           >
-            Oma Tan Mei Ling
+            Djong Nyun Kui
           </h1>
-          <div
-            style={{
-              fontSize: "1.4rem",
-              color: "var(--gold-300)",
-              fontWeight: 600,
-              letterSpacing: "4px",
-              marginBottom: "16px",
-            }}
-          >
-            ( 陈美玲 )
-          </div>
 
           <p
             style={{
@@ -226,7 +212,7 @@ function InvitationContent() {
               }}
             >
               <Calendar size={16} color="var(--gold-400)" />
-              <span>Minggu, 15 November 2026 • 11:30 WIB (Lunch)</span>
+              <span>Jumat, 30 Oktober 2026 • 13:00 WIB - Selesai</span>
             </div>
 
             <div
@@ -243,7 +229,7 @@ function InvitationContent() {
               }}
             >
               <MapPin size={16} color="var(--gold-400)" />
-              <span>Grand Dragon Ballroom (Sun City), Jakarta</span>
+              <span>Rumah Kediaman (VegeDay Halal Tebas), Sambas</span>
             </div>
           </div>
 
@@ -272,17 +258,8 @@ function InvitationContent() {
         {/* RUNDOWN TIMELINE SECTION */}
         <Rundown />
 
-        {/* LOCATION & DRESSCODE SECTION */}
+        {/* LOCATION SECTION */}
         <LocationCard />
-
-        {/* PHOTO GALLERY SECTION */}
-        <Gallery />
-
-        {/* RSVP & VIRTUAL GUESTBOOK SECTION */}
-        <RsvpAndGuestbook initialGuestName={guestName !== "Tamu Undangan" ? guestName : ""} />
-
-        {/* DIGITAL GIFT & ANGPAO SECTION */}
-        <DigitalGift />
 
         {/* FOOTER */}
         <footer
@@ -297,7 +274,7 @@ function InvitationContent() {
             className="font-serif text-gold-gradient"
             style={{ fontSize: "1.7rem", fontWeight: 700, marginBottom: "8px" }}
           >
-            Keluarga Besar Oma Tan Mei Ling (陈美玲)
+            Keluarga Besar Djong Nyun Kui
           </div>
           <p style={{ color: "var(--gold-300)", fontSize: "13px", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px" }}>
             四世同堂 • 松柏长青 • 阖家安康
@@ -315,7 +292,7 @@ function InvitationContent() {
               gap: "4px",
             }}
           >
-            Made with <Heart size={13} color="#dc2626" fill="#dc2626" /> for Oma&apos;s 72nd Longevity Celebration (祝寿)
+            Made with <Heart size={13} color="#dc2626" fill="#dc2626" /> for 72nd Longevity Celebration (祝寿)
           </p>
         </footer>
       </main>

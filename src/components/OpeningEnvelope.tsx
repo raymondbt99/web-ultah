@@ -115,7 +115,7 @@ export default function OpeningEnvelope({ guestName, onOpen }: OpeningEnvelopePr
           >
             <Image
               src="/images/portrait.jpg"
-              alt="Oma Tan Mei Ling (陈美玲)"
+              alt="Djong Nyun Kui"
               fill
               sizes="145px"
               style={{ objectFit: "cover" }}
@@ -164,15 +164,12 @@ export default function OpeningEnvelope({ guestName, onOpen }: OpeningEnvelopePr
           style={{
             fontSize: "1.9rem",
             fontWeight: "700",
-            marginBottom: "4px",
+            marginBottom: "12px",
             letterSpacing: "0.5px",
           }}
         >
-          Oma Tan Mei Ling
+          Djong Nyun Kui
         </h2>
-        <div style={{ fontSize: "14px", color: "var(--gold-300)", marginBottom: "6px", fontWeight: 600 }}>
-          ( 陈美玲 )
-        </div>
 
         <p
           style={{
@@ -183,7 +180,7 @@ export default function OpeningEnvelope({ guestName, onOpen }: OpeningEnvelopePr
             marginBottom: "20px",
           }}
         >
-          Minggu, 15 November 2026 • 11:30 WIB
+          Jumat, 30 Oktober 2026 • 13:00 WIB - Selesai
         </p>
 
         {/* Guest Name Card */}
@@ -209,9 +206,6 @@ export default function OpeningEnvelope({ guestName, onOpen }: OpeningEnvelopePr
           >
             {guestName || "Tamu Undangan"}
           </div>
-          <p style={{ fontSize: "11px", color: "var(--gold-400)", marginTop: "4px", fontStyle: "italic" }}>
-            *Mohon maaf jika ada kesalahan penulisan nama / gelar
-          </p>
         </div>
 
         {/* Open Button */}

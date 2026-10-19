@@ -42,7 +42,7 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
   const handleShareWhatsApp = () => {
     const link = getShareUrl();
     const guest = nameInput.trim() || "Tamu Undangan";
-    const text = `Kepada Yth. ${guest}%0A%0A*祝寿 • Undangan Perayaan Ulang Tahun ke-72 (七十二大寿)*%0A*Oma Tan Mei Ling (陈美玲)*%0A%0AFú rú dōnghǎi, Shòu bǐ nánshān (福如东海，寿比南山)%0A%0ATanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam perayaan syukuran ulang tahun dan jamuan makan siang bersama Oma terkasih kami.%0A%0A📅 Minggu, 15 November 2026 (11:30 WIB)%0A📍 Grand Dragon Ballroom (Sun City Club), LTC Glodok Jakarta%0A%0ALink Undangan Digital & Konfirmasi Kehadiran:%0A${encodeURIComponent(
+    const text = `Kepada Yth. ${guest}%0A%0A*祝寿 • Undangan Perayaan Ulang Tahun ke-72 (七十二大寿)*%0A*Djong Nyun Kui*%0A%0AFú rú dōnghǎi, Shòu bǐ nánshān (福如东海，寿比南山)%0A%0ATanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam perayaan syukuran ulang tahun dan jamuan makan bersama terkasih kami.%0A%0A📅 Jumat, 30 Oktober 2026 (13:00 WIB - Selesai)%0A📍 Rumah Kediaman Djong Nyun Kui (VegeDay Halal Tebas), Jl. Tebas Kuala No. 42, Mak Rampai, Kec. Tebas, Sambas%0A%0ALink Undangan Digital & Informasi Acara:%0A${encodeURIComponent(
       link
     )}`;
     window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");

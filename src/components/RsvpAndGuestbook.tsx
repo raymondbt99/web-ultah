@@ -34,7 +34,7 @@ const initialWishes: WishItem[] = [
     id: "w-3",
     name: "Keluarga Besar Tan Hock Seng (Surabaya)",
     status: "hadir",
-    message: "Selamat ulang tahun yang ke-72 untuk Kakak/Bibi Tan Mei Ling. Semoga senantiasa diberkahi kesehatan, kedamaian, dan dikelilingi anak cucu yang berbakti (四世同堂).",
+    message: "Selamat ulang tahun yang ke-72 untuk Kakak/Bibi Djong Nyun Kui. Semoga senantiasa diberkahi kesehatan, kedamaian, dan dikelilingi anak cucu yang berbakti (四世同堂).",
     timestamp: "3 jam lalu",
     likes: 9,
   },
@@ -42,7 +42,7 @@ const initialWishes: WishItem[] = [
     id: "w-4",
     name: "Ibu Hartono & Rekan Senam",
     status: "hadir",
-    message: "Selamat ultah ke-72 ya Mei Ling! Makin awet muda, bugar, dan penuh sukacita. Sampai jumpa di pesta hari Minggu nanti!",
+    message: "Selamat ultah ke-72 ya Djong Nyun Kui! Makin awet muda, bugar, dan penuh sukacita. Sampai jumpa di pesta hari Jumat nanti!",
     timestamp: "Kemarin",
     likes: 7,
   },
@@ -70,7 +70,7 @@ export default function RsvpAndGuestbook({ initialGuestName = "" }: RsvpAndGuest
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("oma_tan_birthday_wishes");
+      const saved = localStorage.getItem("oma_djong_birthday_wishes") || localStorage.getItem("oma_tan_birthday_wishes");
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -90,7 +90,7 @@ export default function RsvpAndGuestbook({ initialGuestName = "" }: RsvpAndGuest
       id: "w-" + Date.now(),
       name: name.trim(),
       status,
-      message: message.trim() || "祝奶奶福如东海，寿比南山！Selamat ulang tahun ke-72 Oma Tan Mei Ling. Sehat dan bahagia selalu!",
+      message: message.trim() || "祝福如东海，寿比南山！Selamat ulang tahun ke-72 Djong Nyun Kui. Sehat dan bahagia selalu!",
       timestamp: "Baru saja",
       likes: 1,
     };
@@ -98,7 +98,7 @@ export default function RsvpAndGuestbook({ initialGuestName = "" }: RsvpAndGuest
     const updated = [newWish, ...wishes];
     setWishes(updated);
     try {
-      localStorage.setItem("oma_tan_birthday_wishes", JSON.stringify(updated));
+      localStorage.setItem("oma_djong_birthday_wishes", JSON.stringify(updated));
     } catch {
       // Ignore storage errors
     }
@@ -148,7 +148,7 @@ export default function RsvpAndGuestbook({ initialGuestName = "" }: RsvpAndGuest
           RSVP & Buku Tamu Berkah (祝寿留言)
         </h2>
         <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "520px", margin: "8px auto 0" }}>
-          Kehadiran dan doa restu keluarga serta sahabat adalah kado terindah bagi Oma Tan Mei Ling.
+          Kehadiran dan doa restu keluarga serta sahabat adalah kado terindah bagi Djong Nyun Kui.
         </p>
       </div>
 
@@ -186,7 +186,7 @@ export default function RsvpAndGuestbook({ initialGuestName = "" }: RsvpAndGuest
                 Terima Kasih, {name}!
               </h4>
               <p style={{ fontSize: "13.5px", color: "var(--text-muted)", marginBottom: "18px" }}>
-                Konfirmasi dan doa restu Anda telah tercatat dengan baik di buku tamu Oma Tan Mei Ling.
+                Konfirmasi dan doa restu Anda telah tercatat dengan baik di buku tamu Djong Nyun Kui.
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
@@ -308,7 +308,7 @@ export default function RsvpAndGuestbook({ initialGuestName = "" }: RsvpAndGuest
                 </label>
                 <textarea
                   rows={3}
-                  placeholder="Tuliskan doa kesehatan dan umur panjang untuk Oma Tan Mei Ling..."
+                  placeholder="Tuliskan doa kesehatan dan umur panjang untuk Djong Nyun Kui..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   style={{

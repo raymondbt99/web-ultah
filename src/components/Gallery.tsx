@@ -15,8 +15,8 @@ const photos: PhotoItem[] = [
   {
     id: 1,
     src: "/images/portrait.jpg",
-    title: "Oma Tan Mei Ling (陈美玲)",
-    subtitle: "Potret keanggunan dan ketulusan kasih Oma tercinta dalam balutan Qipao sutra merah bersulam burung Phoenix.",
+    title: "Djong Nyun Kui",
+    subtitle: "Potret keanggunan dan ketulusan kasih tercinta dalam balutan Qipao sutra merah bersulam burung Phoenix.",
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ export default function Gallery() {
           Galeri Kenangan 72 Tahun
         </h2>
         <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "520px", margin: "8px auto 0" }}>
-          Merekam jejak keteladanan, cinta tulus, dan kehangatan kebersamaan keluarga Oma Tan Mei Ling.
+          Merekam jejak keteladanan, cinta tulus, dan kehangatan kebersamaan keluarga Djong Nyun Kui.
         </p>
       </div>
 

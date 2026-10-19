@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Clock, Coffee, HeartHandshake, Flame, UtensilsCrossed, Camera, Gift } from "lucide-react";
+import { Clock, Cake, UtensilsCrossed, Sparkles } from "lucide-react";
 
 interface ScheduleItem {
   time: string;
@@ -14,48 +14,26 @@ interface ScheduleItem {
 
 const schedules: ScheduleItem[] = [
   {
-    time: "11:30 - 12:00 WIB",
-    title: "Penyambutan & Welcome Chrysanthemum Tea",
-    chineseTitle: "迎宾品茗",
-    description: "Registrasi tamu undangan, welcome tea bunga krisan & melati hangat, dan sesi temu kangen keluarga besar.",
-    icon: <Coffee size={20} color="var(--gold-400)" />,
-  },
-  {
-    time: "12:00 - 12:30 WIB",
-    title: "Upacara Hormat Anak Cucu & Persembahan Teh (Teapai)",
-    chineseTitle: "子孙敬茶 • 拜寿大礼",
-    description: "Momen khidmat anak, menantu, cucu, dan cicit mempersembahkan secangkir teh bakti serta memohon berkah & doa restu Oma.",
-    icon: <HeartHandshake size={20} color="#facc15" />,
+    time: "13.00 - 13.30 WIB",
+    title: "Potong Kue Ulang Tahun & Doa Syukur",
+    chineseTitle: "切寿桃 • 祝寿祈福",
+    description: "Momen istimewa pemotongan kue ulang tahun dan doa bersama memohon kelimpahan berkah, kesehatan, dan umur panjang.",
+    icon: <Cake size={20} color="#facc15" />,
     isSpecial: true,
   },
   {
-    time: "12:30 - 13:00 WIB",
-    title: "Potong Bakpao Shou Tao & Santap Mie Panjang Umur",
-    chineseTitle: "切寿桃 • 尝长寿面",
-    description: "Pemotongan simbolis kue Shou Tao (寿桃) dan santap Chángshòumiàn bersama sebagai doa kesehatan dan umur panjang melimpah.",
-    icon: <Flame size={20} color="#dc2626" />,
-    isSpecial: true,
-  },
-  {
-    time: "13:00 - 14:15 WIB",
-    title: "Jamuan Makan Siang 8-Course Imperial Banquet",
-    chineseTitle: "八道吉利寿宴",
-    description: "Menikmati 8 hidangan mewah khas perayaan keberuntungan Tionghoa diiringi musik instrumental Guzheng klasik.",
+    time: "13.30 - 15.30 WIB",
+    title: "Makan Sesi 1",
+    chineseTitle: "第一轮宴席 • 齐聚享宴",
+    description: "Jamuan makan bersama sesi pertama penuh kehangatan dan kebersamaan keluarga serta para sahabat.",
     icon: <UtensilsCrossed size={20} color="var(--gold-400)" />,
   },
   {
-    time: "14:15 - 15:00 WIB",
-    title: "Lagu Nostalgia & Foto Bersama 4 Generasi",
-    chineseTitle: "四世同堂 • 怀旧金曲",
-    description: "Persembahan lagu nostalgia favorit Oma, pemutaran video kenangan keluarga, dan sesi foto keluarga besar 4 generasi (四世同堂).",
-    icon: <Camera size={20} color="var(--gold-400)" />,
-  },
-  {
-    time: "15:00 - Selesai",
-    title: "Pembagian Bingkisan Berkah Panjang Umur",
-    chineseTitle: "寿礼致谢",
-    description: "Pembagian bingkisan Shou Tao Bao, telur merah keberuntungan, dan ucapan terima kasih mendalam atas kehadiran keluarga.",
-    icon: <Gift size={20} color="var(--gold-400)" />,
+    time: "15.30 WIB - Selesai",
+    title: "Makan Sesi 2",
+    chineseTitle: "第二轮宴席 • 喜乐同欢",
+    description: "Jamuan makan bersama sesi kedua, ramah tamah, dan sesi foto kebersamaan keluarga besar.",
+    icon: <UtensilsCrossed size={20} color="var(--gold-400)" />,
   },
 ];
 
@@ -85,7 +63,7 @@ export default function Rundown() {
           Rundown Perayaan Syukuran
         </h2>
         <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "520px", margin: "8px auto 0" }}>
-          Rangkaian tradisi penghormatan, doa panjang umur, dan jamuan kebersamaan keluarga besar Oma Tan Mei Ling.
+          Rangkaian tradisi doa panjang umur dan jamuan kebersamaan keluarga besar Djong Nyun Kui.
         </p>
       </div>
 
@@ -104,25 +82,26 @@ export default function Rundown() {
             key={index}
             style={{
               position: "relative",
-              marginBottom: index === schedules.length - 1 ? 0 : "30px",
+              marginBottom: index === schedules.length - 1 ? 0 : "34px",
               paddingLeft: "20px",
             }}
           >
-            {/* Timeline Dot Indicator */}
+            {/* Timeline Dot Node */}
             <div
               style={{
                 position: "absolute",
-                left: "-34px",
-                top: "12px",
-                width: "20px",
-                height: "20px",
+                left: "-37px",
+                top: "4px",
+                width: "26px",
+                height: "26px",
                 borderRadius: "50%",
                 background: item.isSpecial
-                  ? "radial-gradient(circle, #facc15 30%, #dc2626 100%)"
-                  : "var(--gold-gradient)",
+                  ? "linear-gradient(135deg, #facc15, #b91c1c)"
+                  : "linear-gradient(135deg, #b91c1c, #450a0a)",
+                border: "2px solid rgba(250, 204, 21, 0.9)",
                 boxShadow: item.isSpecial
-                  ? "0 0 16px rgba(220, 38, 38, 0.85)"
-                  : "0 0 10px rgba(212, 175, 55, 0.5)",
+                  ? "0 0 16px rgba(250, 204, 21, 0.6)"
+                  : "0 0 8px rgba(0, 0, 0, 0.5)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -133,87 +112,94 @@ export default function Rundown() {
                   width: "8px",
                   height: "8px",
                   borderRadius: "50%",
-                  background: "#160305",
+                  background: "#ffffff",
                 }}
               />
             </div>
 
-            {/* Event Card */}
+            {/* Content Glass Card */}
             <div
               className="glass-card"
               style={{
-                padding: "20px 24px",
+                padding: "20px",
                 border: item.isSpecial
-                  ? "1.5px solid rgba(220, 38, 38, 0.55)"
-                  : "1px solid rgba(212, 175, 55, 0.3)",
-                background: item.isSpecial
-                  ? "linear-gradient(135deg, rgba(65, 12, 18, 0.85), rgba(30, 6, 9, 0.9))"
-                  : "rgba(35, 8, 12, 0.8)",
+                  ? "1.5px solid rgba(212, 175, 55, 0.55)"
+                  : "1px solid rgba(255, 255, 255, 0.12)",
+                boxShadow: item.isSpecial
+                  ? "0 8px 30px rgba(212, 175, 55, 0.15)"
+                  : "0 4px 15px rgba(0, 0, 0, 0.4)",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "8px",
+                  gap: "12px",
                   marginBottom: "8px",
+                  flexWrap: "wrap",
                 }}
               >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <div
+                    style={{
+                      background: "rgba(220, 38, 38, 0.25)",
+                      border: "1px solid rgba(212, 175, 55, 0.4)",
+                      borderRadius: "10px",
+                      padding: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3
+                      className="font-serif"
+                      style={{
+                        fontSize: "1.15rem",
+                        fontWeight: "700",
+                        color: item.isSpecial ? "var(--gold-300)" : "#ffffff",
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        color: "var(--gold-400)",
+                        fontWeight: 600,
+                        letterSpacing: "1px",
+                      }}
+                    >
+                      {item.chineseTitle}
+                    </span>
+                  </div>
+                </div>
+
                 <div
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    color: item.isSpecial ? "var(--gold-300)" : "var(--gold-400)",
-                    fontSize: "13px",
+                    background: "rgba(212, 175, 55, 0.15)",
+                    border: "1px solid rgba(212, 175, 55, 0.35)",
+                    color: "var(--gold-300)",
+                    padding: "4px 12px",
+                    borderRadius: "20px",
+                    fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.5px",
                   }}
                 >
-                  {item.icon}
-                  <span>{item.time}</span>
-                  <span style={{ fontSize: "12px", color: "var(--gold-400)", fontStyle: "italic" }}>
-                    ({item.chineseTitle})
-                  </span>
+                  {item.time}
                 </div>
-
-                {item.isSpecial && (
-                  <span
-                    style={{
-                      background: "rgba(220, 38, 38, 0.3)",
-                      border: "1px solid rgba(212, 175, 55, 0.5)",
-                      color: "var(--gold-300)",
-                      fontSize: "11px",
-                      fontWeight: 700,
-                      padding: "2px 10px",
-                      borderRadius: "12px",
-                      textTransform: "uppercase",
-                      letterSpacing: "1px",
-                    }}
-                  >
-                    Momen Sakral ✨
-                  </span>
-                )}
               </div>
-
-              <h3
-                style={{
-                  fontSize: "1.2rem",
-                  fontWeight: 700,
-                  color: "#fef2f2",
-                  marginBottom: "6px",
-                }}
-              >
-                {item.title}
-              </h3>
 
               <p
                 style={{
                   fontSize: "13.5px",
                   color: "var(--text-muted)",
-                  lineHeight: 1.5,
+                  lineHeight: "1.6",
+                  margin: 0,
                 }}
               >
                 {item.description}

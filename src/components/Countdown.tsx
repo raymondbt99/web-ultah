@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Calendar, Download, Sparkles } from "lucide-react";
 
 export default function Countdown() {
-  // Target: 15 November 2026, 11:30:00 WIB (UTC+7)
-  const targetDate = new Date("2026-11-15T11:30:00+07:00").getTime();
+  // Target: Jumat, 30 Oktober 2026, 13:00:00 WIB (UTC+7)
+  const targetDate = new Date("2026-10-30T13:00:00+07:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -38,13 +38,15 @@ export default function Countdown() {
 
   // Google Calendar URL generator
   const getGoogleCalendarUrl = () => {
-    const title = encodeURIComponent("Perayaan Ulang Tahun ke-72 Oma Tan Mei Ling (七十二大寿)");
+    const title = encodeURIComponent("Perayaan Ulang Tahun ke-72 Djong Nyun Kui (七十二大寿)");
     const details = encodeURIComponent(
-      "Perayaan Syukuran Ulang Tahun ke-72 (Zhu Shou / 祝寿) Oma Tan Mei Ling. Dress code: Oriental Elegance / Batik Halus / Cheongsam (Nuansa Merah & Emas). Jamuan makan siang 8-Course Imperial Chinese Banquet."
+      "Perayaan Syukuran Ulang Tahun ke-72 (Zhu Shou / 祝寿) Djong Nyun Kui. Jamuan makan dan ramah tamah bersama keluarga tercinta."
     );
-    const location = encodeURIComponent("Grand Dragon Imperial Ballroom, Sun City Luxury Club, Gedung LTC Hayam Wuruk Lt. 6, Jakarta Barat");
-    // 2026-11-15 11:30 WIB = 04:30 UTC -> 20261115T043000Z to 20261115T083000Z (15:30 WIB)
-    const dates = "20261115T043000Z/20261115T083000Z";
+    const location = encodeURIComponent(
+      "Rumah Kediaman Djong Nyun Kui (VegeDay Halal Tebas), Jl. Tebas Kuala No. 42, Mak Rampai, Kec. Tebas, Kabupaten Sambas, Kalimantan Barat 79461"
+    );
+    // 2026-10-30 13:00 WIB = 06:00 UTC -> 20261030T060000Z to 20261030T110000Z (18:00 WIB)
+    const dates = "20261030T060000Z/20261030T110000Z";
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
   };
 
@@ -52,15 +54,15 @@ export default function Countdown() {
   const handleDownloadIcs = () => {
     const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Oma Tan Mei Ling Birthday//Invitation//ID
+PRODID:-//Djong Nyun Kui Birthday//Invitation//ID
 BEGIN:VEVENT
-UID:${new Date().getTime()}@omatanmeiling.com
-DTSTAMP:20261115T043000Z
-DTSTART:20261115T043000Z
-DTEND:20261115T083000Z
-SUMMARY:Perayaan Ulang Tahun ke-72 Oma Tan Mei Ling (七十二大寿)
-DESCRIPTION:Perayaan Syukuran 72nd Birthday Oma Tan Mei Ling. Dress code: Oriental Elegance / Batik Halus.
-LOCATION:Grand Dragon Imperial Ballroom, Sun City Luxury Club Jakarta
+UID:${new Date().getTime()}@djongnyunkui.com
+DTSTAMP:20261030T060000Z
+DTSTART:20261030T060000Z
+DTEND:20261030T110000Z
+SUMMARY:Perayaan Ulang Tahun ke-72 Djong Nyun Kui (七十二大寿)
+DESCRIPTION:Perayaan Syukuran 72nd Birthday Djong Nyun Kui.
+LOCATION:Rumah Kediaman Djong Nyun Kui (VegeDay Halal Tebas), Jl. Tebas Kuala No. 42, Kec. Tebas, Kab. Sambas
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
@@ -68,7 +70,7 @@ END:VCALENDAR`;
     const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute("download", "undangan-ultah-oma-tan-mei-ling.ics");
+    link.setAttribute("download", "undangan-ultah-djong-nyun-kui.ics");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

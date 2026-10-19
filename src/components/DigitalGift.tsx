@@ -19,7 +19,7 @@ export default function DigitalGift() {
       key: "bca",
       bank: "Bank Central Asia (BCA)",
       accNumber: "5270198821",
-      accName: "Tan Mei Ling",
+      accName: "Djong Nyun Kui",
       badge: "BCA",
       color: "#005baa",
     },
@@ -27,7 +27,7 @@ export default function DigitalGift() {
       key: "mandiri",
       bank: "Bank Mandiri",
       accNumber: "1190012847192",
-      accName: "Tan Mei Ling",
+      accName: "Djong Nyun Kui",
       badge: "Mandiri",
       color: "#002d62",
     },
@@ -35,14 +35,14 @@ export default function DigitalGift() {
       key: "qris",
       bank: "E-Wallet / QRIS Angpao",
       accNumber: "081188223344",
-      accName: "Tan Mei Ling",
+      accName: "Djong Nyun Kui",
       badge: "QRIS / GoPay",
       color: "#dc2626",
     },
   ];
 
   const giftAddress =
-    "Jl. Pluit Samudra Raya No. 18, RT 06 / RW 05, Pluit, Penjaringan, Jakarta Utara 14450 (Penerima: Oma Tan Mei Ling / c.o David Wijaya 081188223344)";
+    "Jl. Tebas Kuala No. 42, Mak Rampai, Kec. Tebas, Kabupaten Sambas, Kalimantan Barat 79461 (Penerima: Djong Nyun Kui / c.o David Wijaya 081188223344)";
 
   return (
     <section id="gift" style={{ margin: "70px 0" }}>
@@ -69,7 +69,7 @@ export default function DigitalGift() {
           Kado & Angpao Keberuntungan (红包)
         </h2>
         <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "540px", margin: "8px auto 0" }}>
-          Kehadiran dan doa restu Anda adalah karunia yang paling bernilai bagi keluarga. Namun bagi yang ingin mengirimkan tanda kasih dan angpao digital untuk Oma:
+          Kehadiran dan doa restu Anda adalah karunia yang paling bernilai bagi keluarga. Namun bagi yang ingin mengirimkan tanda kasih dan angpao digital untuk Djong Nyun Kui:
         </p>
       </div>
 
@@ -204,13 +204,13 @@ export default function DigitalGift() {
                 </>
               ) : (
                 <>
-                  <Copy size={14} /> Salin Alamat Kediaman Oma
+                  <Copy size={14} /> Salin Alamat Kediaman
                 </>
               )}
             </button>
 
             <a
-              href="https://wa.me/6281188223344?text=Halo%20Keluarga%20Oma%20Tan%20Mei%20Ling,%20kami%20telah%20mengirimkan%20tanda%20kasih%20angpao%20untuk%20ulang%20tahun%20ke-72%20Oma.%20Semoga%20Oma%20selalu%20sehat%20walafiat,%20panjang%20umur,%20dan%20bahagia!"
+              href="https://wa.me/6281188223344?text=Halo%20Keluarga%20Djong%20Nyun%20Kui,%20kami%20telah%20mengirimkan%20tanda%20kasih%20angpao%20untuk%20ulang%20tahun%20ke-72.%20Semoga%20selalu%20sehat%20walafiat,%20panjang%20umur,%20dan%20bahagia!"
               target="_blank"
               rel="noopener noreferrer"
               className="gold-button"
