@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Undangan Ulang Tahun ke-72 Djong Nyun Kui (七十二大寿)",
     description: "福如东海 寿比南山 • A Celebration of Longevity, Grace & Love",
-    images: ["/images/portrait.jpg"],
+    images: ["/images/potrait.jpg"],
   },
 };
 

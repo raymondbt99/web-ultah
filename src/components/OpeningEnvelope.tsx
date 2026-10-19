@@ -114,7 +114,7 @@ export default function OpeningEnvelope({ guestName, onOpen }: OpeningEnvelopePr
             }}
           >
             <Image
-              src="/images/portrait.jpg"
+              src="/images/potrait.jpg"
               alt="Djong Nyun Kui"
               fill
               sizes="145px"

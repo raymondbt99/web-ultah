@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { Sparkles, Calendar, MapPin, Heart, ChevronDown } from "lucide-react";
+import { Sparkles, Calendar, MapPin, Heart, ChevronDown, Printer } from "lucide-react";
 import OpeningEnvelope from "@/components/OpeningEnvelope";
 import AudioControl from "@/components/AudioControl";
 import Countdown from "@/components/Countdown";
@@ -11,11 +11,13 @@ import Rundown from "@/components/Rundown";
 import LocationCard from "@/components/LocationCard";
 import FloatingNav from "@/components/FloatingNav";
 import ShareAndCustomize from "@/components/ShareAndCustomize";
+import PrintPosterModal from "@/components/PrintPosterModal";
 
 function InvitationContent() {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [guestName, setGuestName] = useState("Tamu Undangan");
+  const [isPosterOpen, setIsPosterOpen] = useState(false);
 
   useEffect(() => {
     const toParam = searchParams.get("to");
@@ -42,7 +44,11 @@ function InvitationContent() {
             currentGuest={guestName}
             onUpdateGuest={(name) => setGuestName(name)}
           />
-          <FloatingNav />
+          <FloatingNav onOpenPoster={() => setIsPosterOpen(true)} />
+          <PrintPosterModal
+            isOpen={isPosterOpen}
+            onClose={() => setIsPosterOpen(false)}
+          />
         </>
       )}
 
@@ -117,7 +123,7 @@ function InvitationContent() {
               }}
             >
               <Image
-                src="/images/portrait.jpg"
+                src="/images/potrait.jpg"
                 alt="Djong Nyun Kui"
                 fill
                 sizes="230px"
@@ -231,6 +237,25 @@ function InvitationContent() {
               <MapPin size={16} color="var(--gold-400)" />
               <span>Rumah Kediaman (VegeDay Halal Tebas), Sambas</span>
             </div>
+          </div>
+
+          {/* Action Buttons: Cetak Poster */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "12px", marginBottom: "26px", flexWrap: "wrap" }}>
+            <button
+              onClick={() => setIsPosterOpen(true)}
+              className="gold-button"
+              style={{
+                fontSize: "13.5px",
+                padding: "10px 22px",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                boxShadow: "0 6px 20px rgba(212, 175, 55, 0.35)",
+              }}
+            >
+              <Printer size={16} /> Cetak / Unduh Poster Gambar (Portrait)
+            </button>
           </div>
 
           <a
