@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Clock, Wine, Video, Flame, Utensils, Gift, Music2 } from "lucide-react";
+import { Clock, Coffee, HeartHandshake, Flame, UtensilsCrossed, Camera, Gift } from "lucide-react";
 
 interface ScheduleItem {
   time: string;
   title: string;
+  chineseTitle: string;
   description: string;
   icon: React.ReactNode;
   isSpecial?: boolean;
@@ -13,41 +14,48 @@ interface ScheduleItem {
 
 const schedules: ScheduleItem[] = [
   {
-    time: "18:30 - 19:15 WIB",
-    title: "Red Carpet & Welcome Mocktail",
-    description: "Registrasi tamu, welcome drink spesial, photobooth 360°, dan mingle santai bersama sahabat.",
-    icon: <Wine size={20} color="var(--gold-400)" />,
+    time: "11:30 - 12:00 WIB",
+    title: "Penyambutan & Welcome Chrysanthemum Tea",
+    chineseTitle: "迎宾品茗",
+    description: "Registrasi tamu undangan, welcome tea bunga krisan & melati hangat, dan sesi temu kangen keluarga besar.",
+    icon: <Coffee size={20} color="var(--gold-400)" />,
   },
   {
-    time: "19:15 - 19:45 WIB",
-    title: "Grand Entrance & Memory Tribute",
-    description: "Pembukaan meriah oleh MC, pemutaran video perjalanan hidup Alina dari masa kecil hingga 17 tahun.",
-    icon: <Video size={20} color="var(--gold-400)" />,
-  },
-  {
-    time: "19:45 - 20:30 WIB",
-    title: "Candle Blowing & First Cake Ceremony",
-    description: "Momen puncak tiup 17 lilin harapan, pemotongan kue pertama untuk orang tua tercinta, dan doa bersama.",
-    icon: <Flame size={20} color="#f43f5e" />,
+    time: "12:00 - 12:30 WIB",
+    title: "Upacara Hormat Anak Cucu & Persembahan Teh (Teapai)",
+    chineseTitle: "子孙敬茶 • 拜寿大礼",
+    description: "Momen khidmat anak, menantu, cucu, dan cicit mempersembahkan secangkir teh bakti serta memohon berkah & doa restu Oma.",
+    icon: <HeartHandshake size={20} color="#facc15" />,
     isSpecial: true,
   },
   {
-    time: "20:30 - 21:30 WIB",
-    title: "Dinner Feast & Live Acoustic",
-    description: "Santap malam bersama dengan hidangan buffet mewah diiringi alunan live acoustic band.",
-    icon: <Utensils size={20} color="var(--gold-400)" />,
+    time: "12:30 - 13:00 WIB",
+    title: "Potong Bakpao Shou Tao & Santap Mie Panjang Umur",
+    chineseTitle: "切寿桃 • 尝长寿面",
+    description: "Pemotongan simbolis kue Shou Tao (寿桃) dan santap Chángshòumiàn bersama sebagai doa kesehatan dan umur panjang melimpah.",
+    icon: <Flame size={20} color="#dc2626" />,
+    isSpecial: true,
   },
   {
-    time: "21:30 - 22:15 WIB",
-    title: "Fun Games & Best Dress Award",
-    description: "Keseruan games interaktif, pengumuman Best Dressed Guest, dan pembagian lucky draw hadiah spesial.",
+    time: "13:00 - 14:15 WIB",
+    title: "Jamuan Makan Siang 8-Course Imperial Banquet",
+    chineseTitle: "八道吉利寿宴",
+    description: "Menikmati 8 hidangan mewah khas perayaan keberuntungan Tionghoa diiringi musik instrumental Guzheng klasik.",
+    icon: <UtensilsCrossed size={20} color="var(--gold-400)" />,
+  },
+  {
+    time: "14:15 - 15:00 WIB",
+    title: "Lagu Nostalgia & Foto Bersama 4 Generasi",
+    chineseTitle: "四世同堂 • 怀旧金曲",
+    description: "Persembahan lagu nostalgia favorit Oma, pemutaran video kenangan keluarga, dan sesi foto keluarga besar 4 generasi (四世同堂).",
+    icon: <Camera size={20} color="var(--gold-400)" />,
+  },
+  {
+    time: "15:00 - Selesai",
+    title: "Pembagian Bingkisan Berkah Panjang Umur",
+    chineseTitle: "寿礼致谢",
+    description: "Pembagian bingkisan Shou Tao Bao, telur merah keberuntungan, dan ucapan terima kasih mendalam atas kehadiran keluarga.",
     icon: <Gift size={20} color="var(--gold-400)" />,
-  },
-  {
-    time: "22:15 - Selesai",
-    title: "Dance Floor & After Celebration",
-    description: "Sesi foto bersama, sing-along, dan dansa merayakan malam tak terlupakan.",
-    icon: <Music2 size={20} color="var(--gold-400)" />,
   },
 ];
 
@@ -68,16 +76,16 @@ export default function Rundown() {
             marginBottom: "8px",
           }}
         >
-          <Clock size={14} /> Susunan Acara
+          <Clock size={14} /> Susunan Acara • 寿诞流程
         </div>
         <h2
           className="font-serif text-gold-gradient"
           style={{ fontSize: "2.3rem", fontWeight: "700" }}
         >
-          Rundown Perayaan
+          Rundown Perayaan Syukuran
         </h2>
-        <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "480px", margin: "8px auto 0" }}>
-          Jadwal rangkaian malam istimewa untuk memastikan setiap momen dinikmati bersama.
+        <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "520px", margin: "8px auto 0" }}>
+          Rangkaian tradisi penghormatan, doa panjang umur, dan jamuan kebersamaan keluarga besar Oma Tan Mei Ling.
         </p>
       </div>
 
@@ -88,7 +96,7 @@ export default function Rundown() {
           margin: "0 auto",
           position: "relative",
           paddingLeft: "24px",
-          borderLeft: "2px dashed rgba(212, 175, 55, 0.3)",
+          borderLeft: "2px dashed rgba(212, 175, 55, 0.45)",
         }}
       >
         {schedules.map((item, index) => (
@@ -110,10 +118,10 @@ export default function Rundown() {
                 height: "20px",
                 borderRadius: "50%",
                 background: item.isSpecial
-                  ? "radial-gradient(circle, #f43f5e 30%, #d4af37 100%)"
+                  ? "radial-gradient(circle, #facc15 30%, #dc2626 100%)"
                   : "var(--gold-gradient)",
                 boxShadow: item.isSpecial
-                  ? "0 0 15px rgba(244, 63, 94, 0.8)"
+                  ? "0 0 16px rgba(220, 38, 38, 0.85)"
                   : "0 0 10px rgba(212, 175, 55, 0.5)",
                 display: "flex",
                 alignItems: "center",
@@ -125,7 +133,7 @@ export default function Rundown() {
                   width: "8px",
                   height: "8px",
                   borderRadius: "50%",
-                  background: "#0d131a",
+                  background: "#160305",
                 }}
               />
             </div>
@@ -136,11 +144,11 @@ export default function Rundown() {
               style={{
                 padding: "20px 24px",
                 border: item.isSpecial
-                  ? "1.5px solid rgba(244, 63, 94, 0.5)"
-                  : "1px solid rgba(212, 175, 55, 0.25)",
+                  ? "1.5px solid rgba(220, 38, 38, 0.55)"
+                  : "1px solid rgba(212, 175, 55, 0.3)",
                 background: item.isSpecial
-                  ? "linear-gradient(135deg, rgba(30, 20, 28, 0.8), rgba(20, 28, 40, 0.85))"
-                  : "rgba(18, 27, 39, 0.75)",
+                  ? "linear-gradient(135deg, rgba(65, 12, 18, 0.85), rgba(30, 6, 9, 0.9))"
+                  : "rgba(35, 8, 12, 0.8)",
               }}
             >
               <div
@@ -158,7 +166,7 @@ export default function Rundown() {
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
-                    color: item.isSpecial ? "#f43f5e" : "var(--gold-400)",
+                    color: item.isSpecial ? "var(--gold-300)" : "var(--gold-400)",
                     fontSize: "13px",
                     fontWeight: 700,
                     letterSpacing: "0.5px",
@@ -166,14 +174,17 @@ export default function Rundown() {
                 >
                   {item.icon}
                   <span>{item.time}</span>
+                  <span style={{ fontSize: "12px", color: "var(--gold-400)", fontStyle: "italic" }}>
+                    ({item.chineseTitle})
+                  </span>
                 </div>
 
                 {item.isSpecial && (
                   <span
                     style={{
-                      background: "rgba(244, 63, 94, 0.2)",
-                      border: "1px solid rgba(244, 63, 94, 0.4)",
-                      color: "#fecdd3",
+                      background: "rgba(220, 38, 38, 0.3)",
+                      border: "1px solid rgba(212, 175, 55, 0.5)",
+                      color: "var(--gold-300)",
                       fontSize: "11px",
                       fontWeight: 700,
                       padding: "2px 10px",
@@ -182,7 +193,7 @@ export default function Rundown() {
                       letterSpacing: "1px",
                     }}
                   >
-                    Momen Utama ✨
+                    Momen Sakral ✨
                   </span>
                 )}
               </div>
@@ -191,7 +202,7 @@ export default function Rundown() {
                 style={{
                   fontSize: "1.2rem",
                   fontWeight: 700,
-                  color: "#f8fafc",
+                  color: "#fef2f2",
                   marginBottom: "6px",
                 }}
               >

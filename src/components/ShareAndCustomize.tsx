@@ -26,7 +26,6 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
     e.preventDefault();
     if (nameInput.trim()) {
       onUpdateGuest(nameInput.trim());
-      // Update window URL without reloading
       const url = new URL(window.location.href);
       url.searchParams.set("to", nameInput.trim());
       window.history.replaceState({}, "", url.toString());
@@ -43,7 +42,7 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
   const handleShareWhatsApp = () => {
     const link = getShareUrl();
     const guest = nameInput.trim() || "Tamu Undangan";
-    const text = `Kepada Yth. ${guest}%0A%0ATanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir dalam perayaan The Sweet 17th Birthday of Alina Putri Pratama.%0A%0AInfo lengkap & konfirmasi kehadiran:%0A${encodeURIComponent(
+    const text = `Kepada Yth. ${guest}%0A%0A*祝寿 • Undangan Perayaan Ulang Tahun ke-72 (七十二大寿)*%0A*Oma Tan Mei Ling (陈美玲)*%0A%0AFú rú dōnghǎi, Shòu bǐ nánshān (福如东海，寿比南山)%0A%0ATanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam perayaan syukuran ulang tahun dan jamuan makan siang bersama Oma terkasih kami.%0A%0A📅 Minggu, 15 November 2026 (11:30 WIB)%0A📍 Grand Dragon Ballroom (Sun City Club), LTC Glodok Jakarta%0A%0ALink Undangan Digital & Konfirmasi Kehadiran:%0A${encodeURIComponent(
       link
     )}`;
     window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");
@@ -64,9 +63,9 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
           onClick={() => setIsOpen(true)}
           title="Personalisasi & Bagikan Undangan"
           style={{
-            background: "rgba(18, 27, 39, 0.85)",
+            background: "rgba(35, 8, 12, 0.88)",
             color: "var(--gold-400)",
-            border: "1px solid rgba(212, 175, 55, 0.5)",
+            border: "1.5px solid rgba(212, 175, 55, 0.55)",
             backdropFilter: "blur(12px)",
             borderRadius: "9999px",
             padding: "8px 14px",
@@ -76,7 +75,7 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
             cursor: "pointer",
             fontSize: "12px",
             fontWeight: 700,
-            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.5)",
+            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.7)",
             transition: "all 0.25s ease",
           }}
         >
@@ -93,7 +92,7 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
             position: "fixed",
             inset: 0,
             zIndex: 10001,
-            background: "rgba(6, 10, 16, 0.85)",
+            background: "rgba(10, 2, 4, 0.88)",
             backdropFilter: "blur(12px)",
             display: "flex",
             alignItems: "center",
@@ -108,8 +107,9 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
               maxWidth: "460px",
               width: "100%",
               padding: "28px",
-              border: "1px solid rgba(212, 175, 55, 0.4)",
+              border: "1.5px solid rgba(212, 175, 55, 0.5)",
               position: "relative",
+              background: "#1c0407",
             }}
           >
             <button
@@ -130,35 +130,35 @@ export default function ShareAndCustomize({ currentGuest, onUpdateGuest }: Share
             <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--gold-400)", marginBottom: "6px" }}>
               <Sparkles size={16} />
               <span style={{ fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1.5px" }}>
-                Personalisasi Tamu
+                Personalisasi Tamu Undangan
               </span>
             </div>
 
-            <h3 className="font-serif" style={{ fontSize: "1.4rem", fontWeight: 700, color: "#ffffff", marginBottom: "8px" }}>
-              Buat Link Undangan Khusus
+            <h3 className="font-serif text-gold-gradient" style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: "8px" }}>
+              Buat Link Undangan Khusus Tamu
             </h3>
 
             <p style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "20px" }}>
-              Ketikkan nama tamu atau keluarga untuk membuat tautan undangan khusus dengan nama mereka tertera di sampul depan.
+              Ketikkan nama keluarga atau kerabat untuk membuat tautan undangan khusus dengan nama mereka di sampul amplop.
             </p>
 
             <form onSubmit={handleApply} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               <div>
                 <label style={{ display: "block", fontSize: "12px", color: "var(--text-muted)", marginBottom: "6px", fontWeight: 600 }}>
-                  Nama Tamu Undangan:
+                  Nama Tamu Undangan / Kerabat:
                 </label>
                 <div style={{ display: "flex", gap: "8px" }}>
                   <input
                     type="text"
                     value={nameInput}
                     onChange={(e) => setNameInput(e.target.value)}
-                    placeholder="Contoh: Bpk. Joko & Rekan"
+                    placeholder="Contoh: Bpk. Tan Tjin Hock & Keluarga"
                     style={{
                       flex: 1,
                       padding: "10px 14px",
                       borderRadius: "10px",
                       background: "rgba(255, 255, 255, 0.05)",
-                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(212, 175, 55, 0.3)",
                       color: "#ffffff",
                       fontSize: "13.5px",
                       outline: "none",

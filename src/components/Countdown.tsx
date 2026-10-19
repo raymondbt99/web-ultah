@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Calendar, Download, Sparkles } from "lucide-react";
 
 export default function Countdown() {
-  // Target: 28 November 2026, 18:30:00 WIB (UTC+7)
-  const targetDate = new Date("2026-11-28T18:30:00+07:00").getTime();
+  // Target: 15 November 2026, 11:30:00 WIB (UTC+7)
+  const targetDate = new Date("2026-11-15T11:30:00+07:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -38,13 +38,13 @@ export default function Countdown() {
 
   // Google Calendar URL generator
   const getGoogleCalendarUrl = () => {
-    const title = encodeURIComponent("The Sweet 17th Birthday of Alina Putri Pratama");
+    const title = encodeURIComponent("Perayaan Ulang Tahun ke-72 Oma Tan Mei Ling (七十二大寿)");
     const details = encodeURIComponent(
-      "Perayaan Sweet 17th Birthday Alina Putri Pratama. Dress code: Glam & Elegant (Emerald Green & Champagne Gold). Info lengkap di undangan website."
+      "Perayaan Syukuran Ulang Tahun ke-72 (Zhu Shou / 祝寿) Oma Tan Mei Ling. Dress code: Oriental Elegance / Batik Halus / Cheongsam (Nuansa Merah & Emas). Jamuan makan siang 8-Course Imperial Chinese Banquet."
     );
-    const location = encodeURIComponent("The Glasshouse Grand Pavilion, Jl. Iskandarsyah Raya No. 88, Kebayoran Baru, Jakarta Selatan");
-    // 2026-11-28 18:30 WIB = 11:30 UTC -> 20261128T113000Z to 20261128T160000Z (23:00 WIB)
-    const dates = "20261128T113000Z/20261128T160000Z";
+    const location = encodeURIComponent("Grand Dragon Imperial Ballroom, Sun City Luxury Club, Gedung LTC Hayam Wuruk Lt. 6, Jakarta Barat");
+    // 2026-11-15 11:30 WIB = 04:30 UTC -> 20261115T043000Z to 20261115T083000Z (15:30 WIB)
+    const dates = "20261115T043000Z/20261115T083000Z";
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
   };
 
@@ -52,15 +52,15 @@ export default function Countdown() {
   const handleDownloadIcs = () => {
     const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Alina Birthday//Invitation//ID
+PRODID:-//Oma Tan Mei Ling Birthday//Invitation//ID
 BEGIN:VEVENT
-UID:${new Date().getTime()}@alinabirthday.com
-DTSTAMP:20261128T113000Z
-DTSTART:20261128T113000Z
-DTEND:20261128T160000Z
-SUMMARY:The Sweet 17th Birthday of Alina Putri Pratama
-DESCRIPTION:Perayaan Sweet 17th Birthday Alina Putri Pratama. Dress code: Glam & Elegant (Emerald Green & Champagne Gold).
-LOCATION:The Glasshouse Grand Pavilion, Jakarta Selatan
+UID:${new Date().getTime()}@omatanmeiling.com
+DTSTAMP:20261115T043000Z
+DTSTART:20261115T043000Z
+DTEND:20261115T083000Z
+SUMMARY:Perayaan Ulang Tahun ke-72 Oma Tan Mei Ling (七十二大寿)
+DESCRIPTION:Perayaan Syukuran 72nd Birthday Oma Tan Mei Ling. Dress code: Oriental Elegance / Batik Halus.
+LOCATION:Grand Dragon Imperial Ballroom, Sun City Luxury Club Jakarta
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
@@ -68,7 +68,7 @@ END:VCALENDAR`;
     const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute("download", "undangan-ultah-alina.ics");
+    link.setAttribute("download", "undangan-ultah-oma-tan-mei-ling.ics");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -83,13 +83,13 @@ END:VCALENDAR`;
           gap: "8px",
           color: "var(--gold-400)",
           fontSize: "13px",
-          letterSpacing: "2px",
+          letterSpacing: "2.5px",
           textTransform: "uppercase",
-          fontWeight: 600,
+          fontWeight: 700,
           marginBottom: "16px",
         }}
       >
-        <Sparkles size={14} /> Menghitung Hari Menuju Pesta <Sparkles size={14} />
+        <Sparkles size={14} /> Menghitung Hari Menuju Hari Bahagia ( 祝寿吉日 ) <Sparkles size={14} />
       </div>
 
       {/* Countdown Grid */}
@@ -103,10 +103,10 @@ END:VCALENDAR`;
         }}
       >
         {[
-          { label: "Hari", value: timeLeft.days },
-          { label: "Jam", value: timeLeft.hours },
-          { label: "Menit", value: timeLeft.minutes },
-          { label: "Detik", value: timeLeft.seconds },
+          { label: "Hari (天)", value: timeLeft.days },
+          { label: "Jam (时)", value: timeLeft.hours },
+          { label: "Menit (分)", value: timeLeft.minutes },
+          { label: "Detik (秒)", value: timeLeft.seconds },
         ].map((item, idx) => (
           <div
             key={idx}
@@ -114,8 +114,8 @@ END:VCALENDAR`;
             style={{
               padding: "16px 8px",
               borderRadius: "16px",
-              border: "1px solid rgba(212, 175, 55, 0.3)",
-              background: "rgba(18, 27, 39, 0.8)",
+              border: "1px solid rgba(212, 175, 55, 0.4)",
+              background: "rgba(35, 8, 12, 0.85)",
             }}
           >
             <div

@@ -16,11 +16,11 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://undangan-ultah.vercel.app"),
-  title: "The Sweet 17th Birthday of Alina Putri Pratama | Undangan Ulang Tahun",
-  description: "Kami mengundang Anda untuk hadir dalam perayaan ulang tahun ke-17 Alina Putri Pratama. Simak detail acara, rundown, lokasi, dan kirimkan ucapan serta konfirmasi kehadiran Anda.",
+  title: "Perayaan Ulang Tahun ke-72 Oma Tan Mei Ling (陈美玲) | 祝寿 • 七十二大寿",
+  description: "Undangan perayaan ulang tahun ke-72 (Zhu Shou / 祝寿) Oma Tan Mei Ling. Kami mengundang keluarga dan sahabat untuk bersama mensyukuri limpahan berkah dan umur panjang.",
   openGraph: {
-    title: "Undangan Ulang Tahun ke-17 Alina Putri Pratama",
-    description: "A Night of Radiance, Laughter & Unforgettable Memories",
+    title: "Undangan Ulang Tahun ke-72 Oma Tan Mei Ling (七十二大寿)",
+    description: "福如东海 寿比南山 • A Celebration of Longevity, Grace & Love",
     images: ["/images/portrait.jpg"],
   },
 };

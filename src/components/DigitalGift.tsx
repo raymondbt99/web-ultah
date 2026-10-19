@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Gift, Copy, Check, CreditCard, Send, MapPin } from "lucide-react";
+import { Gift, Copy, Check, CreditCard, Send, MapPin, Sparkles } from "lucide-react";
 
 export default function DigitalGift() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -18,31 +18,31 @@ export default function DigitalGift() {
     {
       key: "bca",
       bank: "Bank Central Asia (BCA)",
-      accNumber: "8831928471",
-      accName: "Alina Putri Pratama",
+      accNumber: "5270198821",
+      accName: "Tan Mei Ling",
       badge: "BCA",
       color: "#005baa",
     },
     {
       key: "mandiri",
       bank: "Bank Mandiri",
-      accNumber: "1270009841235",
-      accName: "Alina Putri Pratama",
+      accNumber: "1190012847192",
+      accName: "Tan Mei Ling",
       badge: "Mandiri",
       color: "#002d62",
     },
     {
-      key: "gopay",
-      bank: "GoPay / Dana / QRIS",
-      accNumber: "081298765432",
-      accName: "Alina Putri Pratama",
-      badge: "E-Wallet",
-      color: "#00a5cf",
+      key: "qris",
+      bank: "E-Wallet / QRIS Angpao",
+      accNumber: "081188223344",
+      accName: "Tan Mei Ling",
+      badge: "QRIS / GoPay",
+      color: "#dc2626",
     },
   ];
 
   const giftAddress =
-    "Jl. Cendrawasih Permai No. 17, RT 04 / RW 02, Gandaria Selatan, Cilandak, Jakarta Selatan 12420 (Penerima: Alina Putri Pratama / 081298765432)";
+    "Jl. Pluit Samudra Raya No. 18, RT 06 / RW 05, Pluit, Penjaringan, Jakarta Utara 14450 (Penerima: Oma Tan Mei Ling / c.o David Wijaya 081188223344)";
 
   return (
     <section id="gift" style={{ margin: "70px 0" }}>
@@ -60,16 +60,16 @@ export default function DigitalGift() {
             marginBottom: "8px",
           }}
         >
-          <Gift size={14} /> Tanda Kasih
+          <Gift size={14} /> Tanda Kasih & Angpao • 礼金红包
         </div>
         <h2
           className="font-serif text-gold-gradient"
           style={{ fontSize: "2.3rem", fontWeight: "700" }}
         >
-          Kado Digital & Tanda Kasih
+          Kado & Angpao Keberuntungan (红包)
         </h2>
-        <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "520px", margin: "8px auto 0" }}>
-          Doa restu Anda merupakan karunia terindah. Namun jika ingin memberikan tanda kasih secara digital, Anda dapat melalui fitur di bawah ini:
+        <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "540px", margin: "8px auto 0" }}>
+          Kehadiran dan doa restu Anda adalah karunia yang paling bernilai bagi keluarga. Namun bagi yang ingin mengirimkan tanda kasih dan angpao digital untuk Oma:
         </p>
       </div>
 
@@ -101,6 +101,8 @@ export default function DigitalGift() {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 gap: "14px",
+                border: "1px solid rgba(212, 175, 55, 0.4)",
+                background: "rgba(35, 8, 12, 0.8)",
               }}
             >
               <div>
@@ -110,7 +112,8 @@ export default function DigitalGift() {
                       fontSize: "11px",
                       fontWeight: 700,
                       color: "var(--gold-300)",
-                      background: "rgba(212, 175, 55, 0.15)",
+                      background: "rgba(220, 38, 38, 0.35)",
+                      border: "1px solid rgba(212, 175, 55, 0.35)",
                       padding: "3px 8px",
                       borderRadius: "6px",
                     }}
@@ -145,13 +148,13 @@ export default function DigitalGift() {
                   width: "100%",
                   fontSize: "12.5px",
                   padding: "9px 12px",
-                  borderColor: copiedKey === acc.key ? "var(--emerald-400)" : "rgba(212, 175, 55, 0.4)",
-                  color: copiedKey === acc.key ? "var(--emerald-400)" : "#ffffff",
+                  borderColor: copiedKey === acc.key ? "var(--gold-400)" : "rgba(212, 175, 55, 0.4)",
+                  color: copiedKey === acc.key ? "var(--gold-300)" : "#ffffff",
                 }}
               >
                 {copiedKey === acc.key ? (
                   <>
-                    <Check size={14} color="var(--emerald-400)" /> Tersalin!
+                    <Check size={14} color="var(--gold-400)" /> Rekening Berhasil Disalin!
                   </>
                 ) : (
                   <>
@@ -171,12 +174,13 @@ export default function DigitalGift() {
             display: "flex",
             flexDirection: "column",
             gap: "12px",
+            border: "1.5px solid rgba(212, 175, 55, 0.4)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--gold-400)" }}>
             <MapPin size={18} />
             <h4 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#ffffff" }}>
-              Kirim Kado / Hadiah Fisik
+              Kirim Bingkisan Bunga / Parcel Buah Sehat
             </h4>
           </div>
           <p style={{ fontSize: "13.5px", color: "var(--text-muted)", lineHeight: 1.6 }}>
@@ -190,8 +194,8 @@ export default function DigitalGift() {
               style={{
                 fontSize: "12.5px",
                 padding: "8px 16px",
-                borderColor: copiedKey === "address" ? "var(--emerald-400)" : "rgba(212, 175, 55, 0.4)",
-                color: copiedKey === "address" ? "var(--emerald-400)" : "#ffffff",
+                borderColor: copiedKey === "address" ? "var(--gold-400)" : "rgba(212, 175, 55, 0.4)",
+                color: copiedKey === "address" ? "var(--gold-300)" : "#ffffff",
               }}
             >
               {copiedKey === "address" ? (
@@ -200,20 +204,20 @@ export default function DigitalGift() {
                 </>
               ) : (
                 <>
-                  <Copy size={14} /> Salin Alamat Pengiriman
+                  <Copy size={14} /> Salin Alamat Kediaman Oma
                 </>
               )}
             </button>
 
             <a
-              href="https://wa.me/6281298765432?text=Halo%20Alina,%20saya%20sudah%20mengirimkan%20tanda%20kasih%20untuk%20ulang%20tahunmu.%20Semoga%20berkah%20dan%20bahagia%20selalu!"
+              href="https://wa.me/6281188223344?text=Halo%20Keluarga%20Oma%20Tan%20Mei%20Ling,%20kami%20telah%20mengirimkan%20tanda%20kasih%20angpao%20untuk%20ulang%20tahun%20ke-72%20Oma.%20Semoga%20Oma%20selalu%20sehat%20walafiat,%20panjang%20umur,%20dan%20bahagia!"
               target="_blank"
               rel="noopener noreferrer"
               className="gold-button"
               style={{ fontSize: "12.5px", padding: "8px 18px" }}
             >
               <Send size={14} />
-              Konfirmasi via WhatsApp
+              Konfirmasi Angpao via WhatsApp
             </a>
           </div>
         </div>

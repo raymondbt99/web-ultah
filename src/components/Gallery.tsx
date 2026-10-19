@@ -15,20 +15,20 @@ const photos: PhotoItem[] = [
   {
     id: 1,
     src: "/images/portrait.jpg",
-    title: "Alina Putri Pratama",
-    subtitle: "Menyambut babak baru kehidupan penuh harapan dan cinta di usia 17 tahun.",
+    title: "Oma Tan Mei Ling (陈美玲)",
+    subtitle: "Potret keanggunan dan ketulusan kasih Oma tercinta dalam balutan Qipao sutra merah bersulam burung Phoenix.",
   },
   {
     id: 2,
     src: "/images/cake.jpg",
-    title: "Sweet 17th Golden Cake",
-    subtitle: "Kue kebahagiaan bertabur emas dan 17 lilin cita-cita yang siap ditiup bersama.",
+    title: "Kue Panjang Umur Shou Tao 72 (七十二大寿)",
+    subtitle: "Kue bertingkat emas berhiaskan simbol Shou (寿) dan bakpao persik keabadian perlambang doa umur panjang dan berkah melimpah.",
   },
   {
     id: 3,
     src: "/images/venue.jpg",
-    title: "The Glasshouse Ballroom",
-    subtitle: "Malam pesta bertabur gemerlap lampu kristal dan kehangatan sahabat tercinta.",
+    title: "Grand Dragon Banquet Hall",
+    subtitle: "Suasana kemeriahan jamuan keluarga besar di bawah lampion merah keberuntungan dan alunan lagu nostalgia.",
   },
 ];
 
@@ -51,16 +51,16 @@ export default function Gallery() {
             marginBottom: "8px",
           }}
         >
-          <Camera size={14} /> Memory Lane
+          <Camera size={14} /> Kenangan & Momen Indah • 岁月留影
         </div>
         <h2
           className="font-serif text-gold-gradient"
           style={{ fontSize: "2.3rem", fontWeight: "700" }}
         >
-          Galeri & Kenangan
+          Galeri Kenangan 72 Tahun
         </h2>
-        <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "480px", margin: "8px auto 0" }}>
-          Setiap senyuman dan detik perjalanan berharga yang membimbing menuju usia ke-17.
+        <p style={{ color: "var(--text-muted)", fontSize: "14px", maxWidth: "520px", margin: "8px auto 0" }}>
+          Merekam jejak keteladanan, cinta tulus, dan kehangatan kebersamaan keluarga Oma Tan Mei Ling.
         </p>
       </div>
 
@@ -83,7 +83,8 @@ export default function Gallery() {
               padding: "12px",
               cursor: "pointer",
               overflow: "hidden",
-              transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease",
+              border: "1px solid rgba(212, 175, 55, 0.4)",
+              background: "rgba(36, 10, 15, 0.8)",
             }}
           >
             <div
@@ -100,13 +101,14 @@ export default function Gallery() {
                 src={photo.src}
                 alt={photo.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 320px"
                 style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
               />
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)",
+                  background: "linear-gradient(to top, rgba(20, 2, 4, 0.7) 0%, transparent 50%)",
                 }}
               />
               <div
@@ -114,7 +116,7 @@ export default function Gallery() {
                   position: "absolute",
                   bottom: "12px",
                   right: "12px",
-                  background: "rgba(0,0,0,0.6)",
+                  background: "rgba(0,0,0,0.65)",
                   backdropFilter: "blur(4px)",
                   padding: "4px 8px",
                   borderRadius: "20px",
@@ -162,7 +164,7 @@ export default function Gallery() {
             position: "fixed",
             inset: 0,
             zIndex: 10000,
-            background: "rgba(5, 8, 12, 0.9)",
+            background: "rgba(12, 2, 3, 0.92)",
             backdropFilter: "blur(16px)",
             display: "flex",
             alignItems: "center",
@@ -178,7 +180,8 @@ export default function Gallery() {
               width: "100%",
               overflow: "hidden",
               position: "relative",
-              border: "1px solid rgba(212, 175, 55, 0.4)",
+              border: "1.5px solid rgba(212, 175, 55, 0.6)",
+              background: "#1c0407",
             }}
           >
             <button
@@ -188,8 +191,8 @@ export default function Gallery() {
                 top: "16px",
                 right: "16px",
                 zIndex: 10,
-                background: "rgba(0, 0, 0, 0.7)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
+                background: "rgba(0, 0, 0, 0.75)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
                 color: "#ffffff",
                 borderRadius: "50%",
                 width: "36px",
@@ -208,7 +211,8 @@ export default function Gallery() {
                 src={selectedPhoto.src}
                 alt={selectedPhoto.title}
                 fill
-                style={{ objectFit: "contain", backgroundColor: "#0b1017" }}
+                sizes="(max-width: 768px) 100vw, 600px"
+                style={{ objectFit: "contain", backgroundColor: "#120204" }}
               />
             </div>
 

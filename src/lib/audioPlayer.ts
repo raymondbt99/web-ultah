@@ -1,25 +1,28 @@
-// Web Audio API ambient celebration music player
-// Generates gentle, warm acoustic harp/piano chords and celebratory melody
+// Web Audio API ambient oriental celebration music player
+// Generates serene, authentic Chinese pentatonic Guzheng / Pipa plucked tones and bells
 class BackgroundMusicPlayer {
   private ctx: AudioContext | null = null;
   private isPlaying: boolean = false;
   private intervalId: NodeJS.Timeout | null = null;
   private step: number = 0;
 
-  // Chord progression in Hz (Romantic & Celebratory: D major key)
-  // Dmaj9 - Bm7 - Gmaj7 - A7sus4
+  // Traditional Chinese Pentatonic scale frequencies in Hz
+  // Gong (C), Shang (D), Jiao (E), Zhi (G), Yu (A)
+  // Tuned in G major pentatonic (G, A, B, D, E) for festive auspicious warmth
   private chords = [
-    [146.83, 220.0, 277.18, 369.99, 440.0], // D, A, C#, F#, A
-    [123.47, 185.0, 220.0, 293.66, 369.99], // B, F#, A, D, F#
-    [98.0, 146.83, 196.0, 293.66, 369.99],  // G, D, G, D, F#
-    [110.0, 164.81, 220.0, 293.66, 440.0], // A, E, A, D, A
+    [196.0, 246.94, 293.66, 392.0], // G, B, D, G (Gong)
+    [220.0, 293.66, 329.63, 440.0], // A, D, E, A (Shang)
+    [164.81, 246.94, 329.63, 392.0], // E, B, E, G (Jiao)
+    [146.83, 220.0, 293.66, 440.0],  // D, A, D, A (Zhi)
   ];
 
+  // Plucked Guzheng melodic passage
   private melodyNotes = [
-    587.33, 659.25, 739.99, 880.0, // D5, E5, F#5, A5
-    739.99, 659.25, 587.33, 440.0,
-    493.88, 587.33, 739.99, 880.0,
-    987.77, 880.0, 739.99, 587.33
+    587.33, 659.25, 783.99, 880.0,  // D5, E5, G5, A5
+    987.77, 880.0, 783.99, 659.25,  // B5, A5, G5, E5
+    587.33, 493.88, 587.33, 783.99,  // D5, B4, D5, G5
+    880.0, 987.77, 1174.66, 987.77, // A5, B5, D6, B5
+    783.99, 659.25, 587.33, 392.0   // G5, E5, D5, G4
   ];
 
   public init() {
@@ -31,20 +34,21 @@ class BackgroundMusicPlayer {
     }
   }
 
-  private playTone(freq: number, duration: number, type: OscillatorType = "sine", gainVal: number = 0.08, detune: number = 0) {
+  // Plucked string synthesis (fast attack, natural ring and exponential decay)
+  private playPluckedTone(freq: number, duration: number, gainVal: number = 0.08) {
     if (!this.ctx) return;
     try {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
-      osc.type = type;
+      // Triangle wave mimics woody acoustic string timbre of Chinese Guzheng
+      osc.type = "triangle";
       osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-      osc.detune.setValueAtTime(detune, this.ctx.currentTime);
 
-      // Envelope: soft attack, gentle decay
       const now = this.ctx.currentTime;
+      // Guzheng pick attack
       gain.gain.setValueAtTime(0.001, now);
-      gain.gain.linearRampToValueAtTime(gainVal, now + 0.12);
+      gain.gain.linearRampToValueAtTime(gainVal, now + 0.02);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
 
       osc.connect(gain);
@@ -73,7 +77,7 @@ class BackgroundMusicPlayer {
 
     this.intervalId = setInterval(() => {
       this.playStep();
-    }, 650);
+    }, 600);
   }
 
   private playStep() {
@@ -83,19 +87,19 @@ class BackgroundMusicPlayer {
     const chord = this.chords[chordIndex];
     const subStep = this.step % 8;
 
-    // Arpeggio note from chord
+    // Arpeggiated plucked string note
     const noteFreq = chord[subStep % chord.length];
-    this.playTone(noteFreq, 2.2, "sine", 0.07);
+    this.playPluckedTone(noteFreq, 2.0, 0.06);
 
-    // Warm bass on beat 0 and 4
+    // Warm deep gong/bass tone on primary downbeats
     if (subStep === 0 || subStep === 4) {
-      this.playTone(chord[0] * 0.5, 3.0, "triangle", 0.09);
+      this.playPluckedTone(chord[0] * 0.5, 3.2, 0.08);
     }
 
-    // Shimmering melody note occasionally
+    // Melodic flute/guzheng high flourish
     if (subStep % 2 === 0) {
       const melodyFreq = this.melodyNotes[(this.step / 2) % this.melodyNotes.length];
-      this.playTone(melodyFreq, 1.8, "sine", 0.035, 3);
+      this.playPluckedTone(melodyFreq, 1.6, 0.04);
     }
 
     this.step++;
